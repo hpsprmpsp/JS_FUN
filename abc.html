@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            table{
+                position: absolute;
+                top:10px;
+                width: 600px;
+                min-height: 500px;
+                left: calc(50% - 300px);
+            }
+            th{
+                width: 200px;
+                background-color: cornflowerblue;
+                color:white;
+                font-size: 3em;
+                font-weight: 900;
+                text-align: center;
+            }
+            th:nth-child(2n){
+                font-style: italic;
+                background-color: deeppink;
+            }
+            tr{
+                padding:0px;
+            }
+            td{
+                padding:0px;
+                
+            }
+            input{
+                height:40px;
+                width:200px;
+                border:1px solid cornflowerblue;
+                font-size: 2em;
+                line-height: 40px;
+                color: cornflowerblue;
+            }
+            button{
+                height:40px;
+                width:600px;
+                color:white;
+                background-color: cornflowerblue;
+                line-height: 40px;
+                font-size: 2em;
+                font-weight: 900;
+                border:1px solid transparent;
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+            }
+            #totJ, #totD, #totP{
+                width: 200px;
+                height: 40px;
+                line-height: 40px;
+                background-color: coral;
+                color:white;
+                font-weight: 900;
+                font-size: 2em;
+                text-align: center;
+            }
+            ul{
+                width: 200px;
+                list-style-type: none;
+                padding: 0px;
+                margin:0px;
+            }
+            li{
+                width:200px;
+                height:40px;
+                background-color: chocolate;
+                color:white;
+                text-align: center;
+                line-height: 40px;
+                margin-top: 2px;
+                margin-bottom: 2px;
+                font-weight: 900;
+                font-size: 2em;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Jyoti</th>
+                <th >Lipstick</th>
+                <th>Padhee</th>
+            </tr>
+            <tr>
+                <td><ul id="ulJ"></ul></td>
+                <td><ul id="ulD"></ul></td>
+                <td><ul id="ulP"></ul></td>
+            </tr>
+            <tr>
+                <td><input id="inpJ" type="number"></td>
+                <td><input id="inpD" type="number"></td>
+                <td><input id="inpP" type="number"></td>
+            </tr>
+            <tr>
+                <td colspan="3"><button id="add" onclick="add()">ADD</button></td>
+            </tr>
+            <tr>
+                <td><div id="totJ"></div></td>
+                <td><div id="totD"></div></td>
+                <td><div id="totP"></div></td>
+            </tr>
+        </table>
+        <script>
+            var j=document.getElementById("inpJ");
+            var d=document.getElementById("inpD");
+            var p=document.getElementById("inpP");
+            
+            var uj=document.getElementById("ulJ");
+            var ud=document.getElementById("ulD");
+            var up=document.getElementById("ulP");
+            
+            var tj=document.getElementById("totJ");
+            var td=document.getElementById("totD");
+            var tp=document.getElementById("totP");
+            
+            
+            var totJ=0;
+            var totD=0;
+            var totP=0;
+            
+            function add(){
+               addLiAndSCore(j,tj,uj);
+                addLiAndSCore(d,td,ud);
+                addLiAndSCore(p,tp,up);
+            }
+            
+            function addLiAndSCore(inp,totDiv,ul,totscr){
+                var l=document.createElement("LI");
+                var t=document.createTextNode(inp.value);
+                l.appendChild(t);
+                ul.appendChild(l);
+                if(inp.id=="inpJ"){
+                    totJ=totJ+Number(inp.value);
+                    totDiv.innerHTML=String(totJ);
+                }else if(inp.id=="inpD"){
+                    totD=Number(totD)+Number(inp.value);
+                    totDiv.innerHTML=String(totD);
+                }
+                else if(inp.id=="inpP"){
+                    totP=totP+Number(inp.value);
+                    totDiv.innerHTML=String(totP);
+                }
+                inp.value="";
+            }
+            
+            
+            
+        </script>
+    </body>
+</html>
